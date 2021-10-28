@@ -1,5 +1,5 @@
-#Magno Efren
-#Reloj transparente en tkinter
+# https://www.youtube.com/c/MagnoEfren/videos
+# Reloj transparente en tkinter
 
 from tkinter import Label, Tk
 import time  
@@ -44,9 +44,9 @@ def mover(event):
         deltax, ventana.winfo_y() + deltay))
     ventana.update()
 
-ventana.bind("<ButtonPress-1>", start)                                      #Monitorear la función de respuesta de operación de presionar el botón izquierdo
-ventana.bind("<ButtonRelease-1>", stop)                                      #Monitorea la función de respuesta de operación de liberación del botón izquierdo
-ventana.bind("<B1-Motion>", mover)                                              #Función de respuesta de movimiento del mouse del monitor
+ventana.bind("<ButtonPress-1>", start)                                      
+ventana.bind("<ButtonRelease-1>", stop)                                      
+ventana.bind("<B1-Motion>", mover)                                              
 ventana.bind("<KeyPress-Escape>", salir)                                         # salir 
 
 texto_hora = Label(ventana,  fg = 'white', bg='gray', 
