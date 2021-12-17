@@ -11,7 +11,6 @@ import conexion
 class Login(Frame):
 	def __init__(self, master, *args):
 		super().__init__( master,*args)
-
 		self.user_marcar = "Ingrese su correo"
 		self.contra_marcar = "Ingrese su contraseña"
 		self.fila1  = ''
@@ -24,14 +23,10 @@ class Login(Frame):
 			event.delete(0, END)
 			event['fg'] = 'grey'
 			event.insert(0, event_text)
-
 		if self.entry2.get() != 'Ingrese su contraseña':
 			self.entry2['show'] =""
-
 		if self.entry2.get() != 'Ingrese su correo':
 			self.entry2['show'] ="*"
-
-
 	def entry_in(self, event):		
 	    if event['fg'] == 'grey':
 	        event['fg'] = 'black'
@@ -63,7 +58,6 @@ class Login(Frame):
 
 		Label(self.ventana_dos, text='VENTANA DOS', font='Arial 40', bg= 'white').pack(expand=True)
 		Button(self.ventana_dos, text='Salir', font='Arial 10', bg= 'red', command= self.salir).pack(expand=True)
-
 
 	def verificacion_users(self):
 		self.indica1['text'] = ''
