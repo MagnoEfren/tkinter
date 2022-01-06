@@ -4,13 +4,11 @@
 
 from tkinter import Canvas, Button, Frame, Label,Tk
 
-
 ventana = Tk()
 ventana.config(bg='black')
 ventana.geometry('500x250')
 ventana.title('Cronometro')
 ventana.minsize(width=500, height=250)
-
 
 ventana.columnconfigure(0,weight=2)
 ventana.rowconfigure(0,weight=2)
@@ -23,7 +21,6 @@ ventana.rowconfigure(1,weight=1)
 ventana.columnconfigure(1,weight=2)
 ventana.rowconfigure(1,weight=1)
 
-
 frame1 = Frame(ventana)
 frame1.grid(column=0,row=0,sticky='snew')
 frame2 = Frame(ventana)
@@ -34,9 +31,7 @@ frame4 = Frame(ventana, bg='gray10')
 frame4.grid(row=1, columnspan=3, sticky='snew')
 frame5 = Frame(ventana, bg='black')
 frame5.grid(row=2, columnspan=3, sticky='snew')
-
 #---
-
 frame1.columnconfigure(0, weight=1)
 frame1.rowconfigure(0, weight=1)
 frame2.columnconfigure(0, weight=1)
@@ -48,14 +43,12 @@ frame4.rowconfigure(0, weight=1)
 frame5.columnconfigure(0, weight=1)
 frame5.rowconfigure(0, weight=1)
 
-
 canvas1= Canvas(frame1, bg='gray40', width=200, height =200,highlightthickness=0)
 canvas1.grid(column=0,row=0, sticky='nsew')
 canvas2= Canvas(frame2, bg='gray30', width=200, height =200,highlightthickness=0)
 canvas2.grid(column=0,row=0, sticky='nsew')
 canvas3= Canvas(frame3, bg='gray20', width=200, height =200,highlightthickness=0)
 canvas3.grid(column=0,row=0, sticky='nsew')
-
 
 texto1 = canvas1.create_text(1,1, text='0', font=('Arial',12,'bold'), fill= 'White')
 texto2 = canvas2.create_text(1,1, text='0', font=('Arial',12,'bold'), fill= 'White')
@@ -72,7 +65,6 @@ circulo1 = canvas1.create_oval(10,10,100,100, outline='red2',width=10)
 circulo2 = canvas2.create_oval(10,10,100,100, outline='medium spring green',width=10)
 circulo3 = canvas3.create_oval(10,10,100,100, outline='magenta2',width=10)
 
-
 mi = 0
 se = 0
 ml = 0
@@ -80,7 +72,6 @@ contar = 0
 click_lectura = 0
 clik_stop = 0
 clik_inicio =0
-
 
 def iniciar_pausar():
 	global mi, se, ml, contar, clik_stop, clik_inicio
@@ -158,8 +149,6 @@ def reiniciar():
 	inicio.config(bg= 'green2', text='INICIAR')
 
 
-
-
 def coordenadas():
 	x = canvas1.winfo_width()
 	y = canvas1.winfo_height()
@@ -202,8 +191,6 @@ def coordenadas():
 	canvas3.itemconfig(texto_milisegundos, font=('Arial',tamano_texto,'bold'))	
 	
 	canvas1.after(1000, coordenadas)
-
-
 
 frame4.columnconfigure(0, weight= 1)
 frame4.rowconfigure(0, weight= 1)
@@ -256,9 +243,7 @@ fin = Button(frame5, text = 'RESTABLECER',relief = "raised",bd=4,  bg='red2',
 	font=('Arial', 12, 'bold'), width =20, command = reiniciar)
 fin.grid(column=2, row=0, padx =10, pady=10, sticky='nsew')
 
-
 coordenadas()
-
 ventana.mainloop()
 
 
