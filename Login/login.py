@@ -17,7 +17,6 @@ class Login(Frame):
 		self.fila2 = ''
 		self.datos = conexion.Registro_datos()
 		self.widgets()
-
 	def entry_out(self, event, event_text):
 		if event['fg'] == 'black' and len(event.get()) ==0:
 			event.delete(0, END)
@@ -114,7 +113,7 @@ class Login(Frame):
 		# contraseña y entry
 		Label(self.master, text= 'Contraseña', bg='DarkOrchid1', fg= 'black', font= ('Lucida Sans', 16, 'bold')).pack(pady=5)
 		self.entry2 = Entry(self.master,font=('Comic Sans MS', 12),justify = 'center',  fg='grey',highlightbackground = "#E65561", 
-																						highlightcolor= "green2", highlightthickness=5)
+			highlightcolor= "green2", highlightthickness=5)
 		self.entry2.insert(0, self.contra_marcar)
 		self.entry2.bind("<FocusIn>", lambda args: self.entry_in(self.entry2))
 		self.entry2.bind("<FocusOut>", lambda args: self.entry_out(self.entry2, self.contra_marcar))
