@@ -64,35 +64,3 @@ style.configure("Horizontal.TScale", background="black")
 Button(ventana, text= 'Iniciar', bg= 'green2',width=20, command= progressBar).grid(column=0,row=1, padx=3, pady=5)
 
 ventana.mainloop()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
