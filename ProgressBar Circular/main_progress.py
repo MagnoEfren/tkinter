@@ -44,7 +44,6 @@ def progressBar():
 			fill='deep sky blue',width=20)
 		canvas.create_line(300,300, 300 + 150*sin(radians(8)), 300 - 150*cos(radians(8)), 
 			fill='deep sky blue',width=20)
-
 	canvas.create_oval(150,150,450,450, fill= '', outline='dark violet', width= 6)
 	canvas.create_oval(180,180,420,420, fill='gray22', outline='dark violet', width=6)
 
@@ -57,15 +56,13 @@ def progressBar():
 
 	ventana.after(100,progressBar)
 
-
 scale1 = ttk.Scale(ventana, orient= 'horizontal', style="Horizontal.TScale", from_ = 0, to=360, length=400)
 scale1.set(0)
 scale1.grid(column=1, row=1,  pady=10, padx=5)
-
 style = ttk.Style()
 style.configure("Horizontal.TScale", background="black")  
-
 Button(ventana, text= 'Iniciar', bg= 'green2',width=20, command= progressBar).grid(column=0,row=1, padx=3, pady=5)
+
 ventana.mainloop()
 
 
