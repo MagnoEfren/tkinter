@@ -34,8 +34,8 @@ Entre estas y muchas mas aplicaciones realizas con Tkinter en Python  encontrara
 
 #### Si desea apoyar puede hacerlo aquí:
 #### Nunca es obligatorio, pero siempre se agradece 😊
-<a href="https://youtu.be/UAkGXXoGugs" target="_blank"></a>
-<img src="https://img.shields.io/badge/Paypal-121212?style=for-the-badge&logo=paypal&logoColor=black" target="_blank">
+<a href="https://www.paypal.com/paypalme/magnoefren" target="_blank"></a>
+<img src="https://img.shields.io/badge/Paypal-151515?style=for-the-badge&logo=paypal&logoColor=black" target="_blank">
   
 
   
