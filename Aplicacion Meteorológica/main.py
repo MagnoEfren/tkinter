@@ -10,25 +10,21 @@ import time
 class Ventana(Frame):
 	def __init__(self, master, *args):
 		super().__init__( master,*args)
-
 		self.click = True
-
+		
 		self.master.columnconfigure(0, weight=1)
 		self.master.columnconfigure(1, weight=1)
 		self.master.rowconfigure(1, weight=1)
 		self.master.columnconfigure(2, weight=1)
 		self.master.rowconfigure(2, weight=1)
-
 		self.frame = Frame(self.master, bg='white', highlightbackground='deep pink',highlightthickness=2)
 		self.frame.grid(columnspan=3, row = 0, sticky='nsew', padx=5, pady=5)
-
 		self.frame2 = Frame(self.master, bg='pale green', highlightbackground='dark violet',highlightthickness=2)
 		self.frame2.grid(column=0, row = 1, sticky='nsew', padx=5, pady=5)
 		self.frame3 = Frame(self.master, bg='SeaGreen1', highlightbackground='dark violet',highlightthickness=2) #pink
 		self.frame3.grid(column=1, row = 1, sticky='nsew', padx=5, pady=5)
 		self.frame4 = Frame(self.master, bg='PaleTurquoise1', highlightbackground='dark violet',highlightthickness=2)
 		self.frame4.grid(column=2, row = 1, sticky='nsew', padx=5, pady=5)
-
 		self.frame5 = Frame(self.master, bg='cyan2', highlightbackground='dark violet',highlightthickness=2) #light coral
 		self.frame5.grid(column=0, row = 2, sticky='nsew', padx=5, pady=5)
 		self.frame6 = Frame(self.master, bg='aquamarine', highlightbackground='dark violet',highlightthickness=2)
@@ -47,10 +43,8 @@ class Ventana(Frame):
 		self.frame6.config(highlightbackground='red')
 		self.frame7.config(highlightbackground='red')
 		self.obtener_tiempo()
-
 		gif = Image.open('buscar.gif')
 		frames = gif.n_frames
-
 		if self.click == True:			
 			for i in range(1, frames):				
 				self.inicio = PhotoImage(file ='buscar.gif', format='gif -index %i' %(i))
@@ -59,17 +53,14 @@ class Ventana(Frame):
 				self.master.update()
 				self.click= False
 				if i + 1 == frames:
-					self.click = True
-
-					
+					self.click = True					
 	def obtener_tiempo(self):
 	    ciudad = self.ingresa_ciudad.get()
-	    #key :  'f08c20ee319398d4ccb55d6a775da822'
+	    #key :  'f08c20ee319398d4ccb55d6a775da82211'
 		#API = 'api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}'
 
 		#Actualizar  la API key con la de su cuenta: 
-	    API = 'https://api.openweathermap.org/data/2.5/weather?q=' +ciudad+ '&appid=f08c20ee319398d4ccb55d6a775da822'  
-
+	    API = 'https://api.openweathermap.org/data/2.5/weather?q=' +ciudad+ '&appid=f08c20ee319398d4ccb55d6a775da82211'  
 	    try:
 		    json_datos = requests.get(API).json()
 		    self.temp['text'] = str(int(json_datos['main']['temp'] - 273.15)) + " °C"
@@ -91,9 +82,7 @@ class Ventana(Frame):
 	    	self.master.update()
 	    	time.sleep(1)	    	
 	    	self.aviso['text'] = ''
-	    	self.localidad['text'] = ''
-
-				
+	    	self.localidad['text'] = ''				
 	def widgets(self):
 		self.inicio = PhotoImage(file ='buscar.gif')
 		self.imagen_temp = PhotoImage(file ='temperatura.png')
@@ -102,7 +91,6 @@ class Ventana(Frame):
 		self.imagen_humedad = PhotoImage(file ='humedad.png')
 		self.imagen_viento = PhotoImage(file ='viento.png')
 		self.imagen_presion = PhotoImage(file ='presion.png')
-
 		self.bt_inicio = Button(self.frame, image= self.inicio, bg='red',highlightthickness=0, activebackground='white', bd=0, command = self.animacion)
 		self.bt_inicio.grid(column=0, row=0, padx=2, pady=2)
 		self.ingresa_ciudad = Entry(self.frame, font=('Comic Sans MS', 12),highlightbackground = "DarkOrchid1", highlightcolor= "green2", highlightthickness=2)
