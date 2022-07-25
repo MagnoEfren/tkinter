@@ -13,7 +13,6 @@ class Ventana(Frame):
 
 		self.menu = True
 		self.color = True
-
 		self.codigo = StringVar()
 		self.nombre = StringVar()
 		self.modelo = StringVar()
@@ -22,7 +21,6 @@ class Ventana(Frame):
 		self.buscar = StringVar()
 		self.buscar_actualiza =  StringVar()
 		self.id = StringVar()
-
 		self.base_datos = Registro_datos()
 
 		self.frame_inicio = Frame(self.master, bg='black', width=50, height=45)
@@ -39,14 +37,11 @@ class Ventana(Frame):
 		self.master.rowconfigure(1, weight=1)
 		self.frame_principal.columnconfigure(0, weight=1)
 		self.frame_principal.rowconfigure(0, weight=1)
-
-
-		self.widgets()
-		
+		self.widgets()		
 
 	def pantalla_inicial(self):
 		self.paginas.select([self.frame_uno])
-
+		
 	def pantalla_datos(self):
 		self.paginas.select([self.frame_dos])
 		self.frame_dos.columnconfigure(0, weight=1)
@@ -121,7 +116,6 @@ class Ventana(Frame):
 			self.texto.config(bg='white')
 			self.bt_color.config(bg='white',activebackground='white')	
 			self.color = True
-
 	def widgets(self):
 		self.imagen_inicio = PhotoImage(file ='inicio.png')
 		self.imagen_menu = PhotoImage(file ='menu.png')
@@ -136,12 +130,10 @@ class Ventana(Frame):
 		self.imagen_dos= PhotoImage(file ='imagen_dos.png')
 		self.dia = PhotoImage(file ='dia.png')
 		self.noche= PhotoImage(file ='noche.png')
-
 		self.bt_inicio = Button(self.frame_inicio, image= self.imagen_inicio, bg='black',activebackground='black', bd=0, command = self.menu_lateral)
 		self.bt_inicio.grid(column=0, row=0, padx=5, pady=10)
 		self.bt_cerrar = Button(self.frame_inicio, image= self.imagen_menu, bg='black',activebackground='black', bd=0, command = self.menu_lateral)
 		self.bt_cerrar.grid(column=0, row=0, padx=5, pady=10)	
-
 		#BOTONES Y ETIQUETAS DEL MENU LATERAL 
 		Button(self.frame_menu, image= self.imagen_datos, bg='black', activebackground='black', bd=0, command = self.pantalla_datos).grid(column=0, row=1, pady=20,padx=10)
 		Button(self.frame_menu, image= self.imagen_registrar, bg='black',activebackground='black', bd=0, command =self.pantalla_escribir ).grid(column=0, row=2, pady=20,padx=10)
@@ -155,8 +147,7 @@ class Ventana(Frame):
 		Label(self.frame_menu, text= 'Eliminar', bg= 'black', fg= 'DarkOrchid1', font= ('Lucida Sans', 12, 'bold')).grid(column=1, row=4, pady=20, padx=2)	
 		Label(self.frame_menu, text= 'Ajustes', bg= 'black', fg= 'DarkOrchid1', font= ('Lucida Sans', 12, 'bold')).grid(column=1, row=5, pady=20, padx=2)
 
-
-		#############################  CREAR  PAGINAS  ##############################
+        	#############################  CREAR  PAGINAS  ##############################
 		estilo_paginas = ttk.Style()
 		estilo_paginas.configure("TNotebook", background='black', foreground='black', padding=0, borderwidth=0)
 		estilo_paginas.theme_use('default')
@@ -180,25 +171,18 @@ class Ventana(Frame):
 		self.paginas.add(self.frame_cuatro)
 		self.paginas.add(self.frame_cinco)
 		self.paginas.add(self.frame_seis)
-
-
 		##############################         PAGINAS       #############################################
 
 		######################## FRAME TITULO #################
 		self.titulo = Label(self.frame_top,text= 'APLICACION DE ESCRITORIO EN PYTHON CON TKINTER', bg='black', fg= 'DarkOrchid1', font= ('Imprint MT Shadow', 15, 'bold'))
 		self.titulo.pack(expand=1)
-
 		######################## VENTANA PRINCIPAL #################
-
 		Label(self.frame_uno, text= 'Electrónica Programación y Tecnología', bg='DarkOrchid1', fg= 'white', font= ('Freehand521 BT', 20, 'bold')).pack(expand=1)
 		Label(self.frame_uno ,image= self.logo, bg='DarkOrchid1').pack(expand=1)
-
 
 		######################## MOSTRAR TODOS LOS PRODUCTOS DE LA BASE DE DATOS MYSQL #################
 		Label(self.frame_dos, text= 'Datos de MySQL', bg='white', fg= 'DarkOrchid1', font= ('Comic Sans MS', 12, 'bold')).grid(column =0, row=0)
 		Button(self.frame_dos, text='ACTUALIZAR',fg='black' ,font = ('Arial', 11,'bold'), command= self.datos_totales, bg = 'green2', bd = 2, borderwidth=2).grid(column=1, row=0, pady=5)
-
-
 		#ESTILO DE LAS TABLAS DE DATOS TREEVIEW
 		estilo_tabla = ttk.Style()
 		estilo_tabla.configure("Treeview", font= ('Helvetica', 10, 'bold'), foreground='black',  background='white')  #, fieldbackground='yellow'
@@ -206,8 +190,6 @@ class Ventana(Frame):
 		estilo_tabla.configure('Heading',background = 'white', foreground='navy',padding=3, font= ('Arial', 10, 'bold'))
 		estilo_tabla.configure('Item',foreground = 'white', focuscolor ='DarkOrchid1')
 		estilo_tabla.configure('TScrollbar', arrowcolor = 'DarkOrchid1',bordercolor  ='black', troughcolor= 'DarkOrchid1',background ='white')
-
-
 		#TABLA UNO 
 		self.frame_tabla_uno = Frame(self.frame_dos, bg= 'gray90')
 		self.frame_tabla_uno.grid(columnspan=3, row=2, sticky='nsew')		
@@ -286,7 +268,6 @@ class Ventana(Frame):
 		#TABLA DOS
 		self.frame_tabla_dos = Frame(self.frame_cinco, bg= 'gray90')
 		self.frame_tabla_dos.grid(columnspan=4, row=2, sticky='nsew')
-
 		self.tabla_dos = ttk.Treeview(self.frame_tabla_dos) 
 		self.tabla_dos.grid(column=0, row=0, sticky='nsew')
 		ladox = ttk.Scrollbar(self.frame_tabla_dos, orient = 'horizontal', command= self.tabla_dos.xview)
@@ -301,15 +282,12 @@ class Ventana(Frame):
 		self.tabla_dos.column('Modelo', minwidth=100, width=120, anchor='center' )
 		self.tabla_dos.column('Precio', minwidth=100, width=120 , anchor='center')
 		self.tabla_dos.column('Cantidad', minwidth=100, width=105, anchor='center')
-
 		self.tabla_dos.heading('#0', text='Codigo', anchor ='center')
 		self.tabla_dos.heading('Nombre', text='Nombre', anchor ='center')
 		self.tabla_dos.heading('Modelo', text='Modelo', anchor ='center')
 		self.tabla_dos.heading('Precio', text='Precio', anchor ='center')
 		self.tabla_dos.heading('Cantidad', text='Cantidad', anchor ='center')
-		self.tabla_dos.bind("<<TreeviewSelect>>", self.obtener_fila)  
-	
-	
+		self.tabla_dos.bind("<<TreeviewSelect>>", self.obtener_fila)  	
 		######################## AJUSTES #################
 		self.text_ajustes = Label(self.frame_seis, text = 'Configuracion',fg='purple', bg ='white', font=('Kaufmann BT',28,'bold'))
 		self.text_ajustes.pack(expand=1)
@@ -318,8 +296,6 @@ class Ventana(Frame):
 		self.texto = Label(self.frame_seis, text = '@autor:Magno Efren \n Desarrollado en Python',fg='red', bg ='white', font=('Kaufmann BT',18))
 		self.texto.pack(expand=1)
 
-
-
 	def datos_totales(self):
 		datos = self.base_datos.mostrar_productos()
 		self.tabla_uno.delete(*self.tabla_uno.get_children())
@@ -327,7 +303,6 @@ class Ventana(Frame):
 		for dato in datos:
 			i= i+1
 			self.tabla_uno.insert('',i, text = datos[i][1:2], values=datos[i][2:6])
-
 
 	def agregar_datos(self):
 		codigo = self.codigo.get()
@@ -354,7 +329,6 @@ class Ventana(Frame):
 		dato = self.buscar_actualiza.get()
 		dato = str("'" + dato + "'")
 		nombre_buscado = self.base_datos.busca_producto(dato)
-
 		if nombre_buscado == []:
 			self.aviso_actualizado['text'] = 'No existe'			
 			self.indica_busqueda.update()						
@@ -372,7 +346,6 @@ class Ventana(Frame):
 				self.precio.set(nombre_buscado[i][4])
 				self.cantidad.set(nombre_buscado[i][5])
 
-
 	def actualizar_tabla(self):	
 		Id = self.id.get() 	
 		codigo = self.codigo.get()
@@ -386,8 +359,7 @@ class Ventana(Frame):
 		time.sleep(1) 
 		self.aviso_actualizado['text'] = ''
 		self.limpiar_datos()
-		self.buscar_actualiza.set('')
-				
+		self.buscar_actualiza.set('')				
 	def limpiar_datos(self):
 		self.codigo.set('')
 		self.nombre.set('')
@@ -399,19 +371,15 @@ class Ventana(Frame):
 		nombre_producto = self.buscar.get()
 		nombre_producto = str("'" + nombre_producto + "'")
 		nombre_buscado = self.base_datos.busca_producto(nombre_producto)
-
 		if nombre_buscado == []:
 			self.indica_busqueda['text'] = 'No existe'
 			self.indica_busqueda.update()						
 			time.sleep(1) 
 			self.indica_busqueda['text'] =''
-
 		i = -1
 		for dato in nombre_buscado:
 			i= i+1
 			self.tabla_dos.insert('',i, text = nombre_buscado[i][1:2], values=nombre_buscado[i][2:6])
-
-
 	def eliminar_fila(self):
 		fila = self.tabla_dos.selection()
 		if len(fila) !=0:
@@ -440,7 +408,6 @@ class Ventana(Frame):
 		data = self.tabla_dos.item(current_item)
 		self.nombre_borrar = data['values'][0]
 
-
 if __name__ == "__main__":
 	ventana = Tk()
 	ventana.title('')
@@ -449,91 +416,3 @@ if __name__ == "__main__":
 	ventana.call('wm', 'iconphoto', ventana._w, PhotoImage(file='logo.png'))	
 	app = Ventana(ventana)
 	app.mainloop()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"""
-   # ,highlightbackground='red',highlightcolor='yellow',activebackground='black',activeforeground='deep sky blue'  botonnn
-
-
-
-	ventana.wm_attributes("-topmost", True)
-	#Label(self.master, image= self.logo, bg='DarkOrchid1').pack() #,height=150, width=150
-	#Label(self.frame_contenido2, text= 'datos', bg='DarkOrchid1', fg= 'black', font= ('Lucida Sans', 16, 'bold')).grid()
-	#self.entry1 = Entry(self.frame_contenido2, font=('Comic Sans MS', 12),justify = 'center', fg='grey',highlightbackground = "#E65561", 
-		#highlightcolor= "green2", highlightthickness=5)
-	#self.entry1.pack(pady=5)
-
-
-	#ventana.overrideredirect(1)
-	#ventana.resizable(0,0)
-	#self.master.attributes('-alpha',0.5)
-
-		mygreen = "black"
-		myred = "black"
-
-		style = ttk.Style()
-
-		style.theme_create( "yummy", parent="alt", settings={
-		        "TNotebook": {"configure": {"tabmargins": [0, 0, 0, 0] } },
-		        "TNotebook.Tab": {
-		            "configure": {"padding": [0, 0], "background": mygreen },
-		            "map":       {"background": [("selected", myred)],
-		                          "expand": [("selected", [0, 0, 0, 0])] } } } )
-
-		style.theme_use("yummy")
-
-
-
-
-			#############################  CREAR  PAGINAS  ##############################
-		estilo_paginas = ttk.Style()
-		estilo_paginas.configure("TNotebook", background='black', foreground='black', padding=0, borderwidth=0)
-		estilo_paginas.theme_use('default')
-		estilo_paginas.configure("TNotebook", background='black', borderwidth=0)
-		estilo_paginas.configure("TNotebook.Tab", background="black", borderwidth=0)
-		estilo_paginas.map("TNotebook", background=[("selected", 'black')])
-		estilo_paginas.map("TNotebook.Tab", background=[("selected", 'black')], foreground=[("selected", 'black')]);
-		#estilo.configure("TNotebook.Tab", background='red', foreground='red');
-
-
-"""
