@@ -8,7 +8,6 @@ from tkinter import Button, Entry, Label, Menu, Scrollbar, Text
 from tkinter import messagebox, filedialog, Toplevel, colorchooser
 from tkinter import font, BooleanVar
 
-
 class Ventana(Frame):
 	def __init__(self, master):
 		super().__init__( master)
@@ -16,7 +15,6 @@ class Ventana(Frame):
 		self.master.iconbitmap('icono.ico')
 		self.master.geometry('700x500+380+20')
 		self.master.protocol("WM_DELETE_WINDOW", self.salir)
-
 		self.señal_ajustes = BooleanVar()
 		self.info_estado =  BooleanVar()
 		self.info_estado.set(False)
@@ -26,8 +24,6 @@ class Ventana(Frame):
 		self.y = 0
 		self.n = 12
 		self.f = 'Arial'
-
-
 		self.widgets()
 		self.master.columnconfigure(0, weight=1)
 		self.master.rowconfigure(0, weight=1)
@@ -43,7 +39,6 @@ class Ventana(Frame):
 		archivo.add_command(label="Guardar", command = self.guardar_archivo)
 		archivo.add_separator()			
 		archivo.add_command(label="Salir", command = self.master.quit)
-
 		edicion = Menu(menu, tearoff=0)
 		edicion.add_command(label="Deshacer", command = lambda: self.texto.edit_undo())
 		edicion.add_separator()
@@ -75,7 +70,6 @@ class Ventana(Frame):
 		ayuda.add_command(label="Ver la ayuda")
 		ayuda.add_separator()		
 		ayuda.add_command(label="Acerca del Bloc de notas", command= self.acerca_de)
-
 		menu.add_cascade(label="Archivo", menu=archivo)
 		menu.add_cascade(label="Edicion", menu=edicion)
 		menu.add_cascade(label="Formato", menu=formato)
@@ -90,7 +84,6 @@ class Ventana(Frame):
 		ladoy.grid(column = 1, row = 0, sticky='ns')
 		self.texto.configure(xscrollcommand = ladox.set, yscrollcommand = ladoy.set)
 		self.barra_estado = Label(self.master, font = ('Segoe UI Symbol', 10))
-
 	def ajustes_de_linea(self):
 		if self.señal_ajustes.get() == True:
 			self.texto.config(wrap='word')	
@@ -131,17 +124,14 @@ class Ventana(Frame):
 			self.master.quit()
 
 	def abrir_archivo(self):
-		direcion = filedialog.askopenfilename(initialdir ='/', 
-												title='Archivo', 
-											filetype=(('txt files', '*.txt*'),('All files', '*.*')))
+		direcion = filedialog.askopenfilename(initialdir ='/', title='Archivo', 
+		filetype=(('txt files', '*.txt*'),('All files', '*.*')))
 		if direcion != '':		
 			archivo = open(direcion, 'r')
 			contenido = archivo.read()
 			self.texto.delete('1.0', 'end')
 			self.texto.insert('1.0', contenido)
 			self.master.title(direcion)
-
-
 	def guardar_archivo(self):
 		try: 
 			filename = filedialog.asksaveasfilename(defaultextension='.txt')
@@ -177,8 +167,7 @@ class Ventana(Frame):
 			text= 'Programa realizado en Python \n con la liberia de Tkinter \n\n Autor: Magno Efren').pack(expand=True)
 		vent_info.mainloop()
 
- 
-	def formato_fuente(self):
+ 	def formato_fuente(self):
 		self.vent_tipo_fuente = Toplevel()
 		self.vent_tipo_fuente.overrideredirect(1)
 		self.vent_tipo_fuente.geometry('390x290+400+200')
