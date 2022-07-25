@@ -42,14 +42,12 @@ frame4.columnconfigure(0, weight=1)
 frame4.rowconfigure(0, weight=1)
 frame5.columnconfigure(0, weight=1)
 frame5.rowconfigure(0, weight=1)
-
 canvas1= Canvas(frame1, bg='gray40', width=200, height =200,highlightthickness=0)
 canvas1.grid(column=0,row=0, sticky='nsew')
 canvas2= Canvas(frame2, bg='gray30', width=200, height =200,highlightthickness=0)
 canvas2.grid(column=0,row=0, sticky='nsew')
 canvas3= Canvas(frame3, bg='gray20', width=200, height =200,highlightthickness=0)
 canvas3.grid(column=0,row=0, sticky='nsew')
-
 texto1 = canvas1.create_text(1,1, text='0', font=('Arial',12,'bold'), fill= 'White')
 texto2 = canvas2.create_text(1,1, text='0', font=('Arial',12,'bold'), fill= 'White')
 texto3 = canvas3.create_text(1,1, text='0', font=('Arial',12,'bold'), fill= 'White')
@@ -82,26 +80,19 @@ def iniciar_pausar():
 		if se ==59:
 			se = 0
 			mi = mi + 1
-
 	contar = inicio.after(1, iniciar_pausar)
-
-	clik_inicio = inicio.grid_forget()
-	
+	clik_inicio = inicio.grid_forget()	
 	if clik_inicio is   None:		
 		stop.grid(column=0, row=0, padx =10, pady=10, sticky='nsew')
 		stop.config(bg= 'orange', text= 'DETENER')
 
-
 def stop_boton():
 	global  contar, clik_stop
-
-
 	clik_stop = stop.grid_forget()
 	if  clik_stop  is  None :
 		inicio.grid(column=0, row=0, padx =10, pady=10, sticky='nsew')
 		inicio.config(bg= 'aqua', text='CONTINUAR')		
 		inicio.after_cancel(contar)
-
 
 def vueltas():
 	global mi, se, ml,click_lectura
@@ -127,9 +118,6 @@ def vueltas():
 			fg = 'white', bg='gray10')
 		click_lectura = 0
 
-
-
-
 def reiniciar():
 	global mi, se, ml, contar, click_lectura
 	mi = 0
@@ -143,7 +131,6 @@ def reiniciar():
 	lectura4.configure(text='Lectura 4', fg = 'white', bg='gray10')
 	lectura5.configure(text='Lectura 5', fg = 'white', bg='gray10')
 	lectura6.configure(text='Lectura 6', fg = 'white', bg='gray10')
-
 	stop.grid_forget()	
 	inicio.grid(column=0, row=0, padx =10, pady=10, sticky='nsew')
 	inicio.config(bg= 'green2', text='INICIAR')
@@ -157,39 +144,30 @@ def coordenadas():
 	y1 = int(y - 0.1*x - 0.1*y + 20)
 	x2 = int(x - 0.4*x - 0.4*y - 15)
 	y2 = int(y - 0.4*x - 0.4*y - 30)
-
 	tamano = int( y1*0.2 + x1*0.1 + 10 )
 	tamano_texto = int( y1*0.02 + x1*0.02 + 3 )
-
 	#print(x1, y1, x2, y2)	
 	canvas1.coords(circulo1, x1,y1,x2,y2)
 	canvas2.coords(circulo2, x1,y1,x2,y2)
 	canvas3.coords(circulo3, x1,y1,x2,y2)
-
 	#cordenas numeros
 	z1 = int(x1*0.6- 10)
 	z2 = int(y1*0.6 - 10)
-
 	#coordenadas texto 
 	w1 = int(x1*0.49 + 8)
 	w2 = int(y1*0.8 + 10)
-
 	canvas1.coords(texto1, z1, z2)
 	canvas2.coords(texto2, z1, z2)
 	canvas3.coords(texto3, z1, z2)	
-
 	canvas1.itemconfig(texto1, font=('Arial',tamano,'bold'),text= mi)
 	canvas2.itemconfig(texto2, font=('Arial',tamano,'bold'),text= se )
 	canvas3.itemconfig(texto2, font=('Arial',tamano,'bold'), text= ml)
-
 	canvas1.coords(texto_minutos, w1, w2)
 	canvas2.coords(texto_segundos, w1, w2)
 	canvas3.coords(texto_milisegundos, w1, w2)
-
 	canvas1.itemconfig(texto_minutos, font=('Arial',tamano_texto,'bold'))
 	canvas2.itemconfig(texto_segundos, font=('Arial',tamano_texto,'bold'))
-	canvas3.itemconfig(texto_milisegundos, font=('Arial',tamano_texto,'bold'))	
-	
+	canvas3.itemconfig(texto_milisegundos, font=('Arial',tamano_texto,'bold'))		
 	canvas1.after(1000, coordenadas)
 
 frame4.columnconfigure(0, weight= 1)
@@ -204,7 +182,6 @@ frame4.columnconfigure(4, weight= 1)
 frame4.rowconfigure(0, weight= 1)
 frame4.columnconfigure(5, weight= 1)
 frame4.rowconfigure(0, weight= 1)
-
 
 lectura1 = Label(frame4, text='Lectura 1', fg = 'white', bg='gray10')
 lectura1.grid(column=0,row=0, sticky='nsew')
@@ -226,7 +203,6 @@ frame5.rowconfigure(0, weight= 1)
 frame5.columnconfigure(2, weight= 1)
 frame5.rowconfigure(0, weight= 1)
 
-
 stop = Button(frame5, text = 'DETENER', relief = "raised",bd=5, bg='orange', 
 	font=('Arial', 12, 'bold'), width =20, command = stop_boton)
 stop.grid(column=0, row=0, padx =10, pady=10, sticky='nsew')
@@ -245,36 +221,4 @@ fin.grid(column=2, row=0, padx =10, pady=10, sticky='nsew')
 
 coordenadas()
 ventana.mainloop()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
