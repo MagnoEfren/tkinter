@@ -39,9 +39,12 @@ class Ventana(Frame):
 		archivo.add_command(label="Guardar", command = self.guardar_archivo)
 		archivo.add_separator()			
 		archivo.add_command(label="Salir", command = self.master.quit)
+
 		edicion = Menu(menu, tearoff=0)
 		edicion.add_command(label="Deshacer", command = lambda: self.texto.edit_undo())
 		edicion.add_separator()
+		
+
 		edicion.add_command(label="Cortar", accelerator='Ctrl+X', 
 			command = lambda: self.master.focus_get().event_generate("<<Cut>>") )
 		edicion.add_command(label="Copiar", accelerator='Ctrl+C', 
@@ -70,13 +73,14 @@ class Ventana(Frame):
 		ayuda.add_command(label="Ver la ayuda")
 		ayuda.add_separator()		
 		ayuda.add_command(label="Acerca del Bloc de notas", command= self.acerca_de)
+
 		menu.add_cascade(label="Archivo", menu=archivo)
 		menu.add_cascade(label="Edicion", menu=edicion)
 		menu.add_cascade(label="Formato", menu=formato)
 		menu.add_cascade(label="Ver", menu=ver)
 		menu.add_cascade(label="Ayuda", menu=ayuda)
 
-		self.texto = Text(self.master, font= ('Arial', 12), undo= True, insertbackground='red')  #undo = True, selectbackground='yellow' 
+		self.texto = Text(self.master, font= ('Arial', 12), undo= True, insertbackground='red')  
 		self.texto.grid(column=0, row=0, sticky='nsew')
 		ladox = Scrollbar(self.master, orient = 'horizontal', command= self.texto.xview)
 		ladox.grid(column=0, row = 1, sticky='ew')
@@ -84,6 +88,10 @@ class Ventana(Frame):
 		ladoy.grid(column = 1, row = 0, sticky='ns')
 		self.texto.configure(xscrollcommand = ladox.set, yscrollcommand = ladoy.set)
 		self.barra_estado = Label(self.master, font = ('Segoe UI Symbol', 10))
+
+		#eventos
+		self.master.bind('<Shift-KeyPress-S>', self.salir)
+
 	def ajustes_de_linea(self):
 		if self.señal_ajustes.get() == True:
 			self.texto.config(wrap='word')	
@@ -117,21 +125,24 @@ class Ventana(Frame):
 		else:
 			self.n = 12
 
-	def salir(self):
+	def salir(self, *args):
 		valor = messagebox.askyesno('Salir', '¿Desea Salir?',parent= self.master)
 		if valor == True:
 			self.master.destroy()
 			self.master.quit()
 
 	def abrir_archivo(self):
-		direcion = filedialog.askopenfilename(initialdir ='/', title='Archivo', 
-		filetype=(('txt files', '*.txt*'),('All files', '*.*')))
+		direcion = filedialog.askopenfilename(initialdir ='/', 
+												title='Archivo', 
+											filetype=(('txt files', '*.txt*'),('All files', '*.*')))
 		if direcion != '':		
 			archivo = open(direcion, 'r')
 			contenido = archivo.read()
 			self.texto.delete('1.0', 'end')
 			self.texto.insert('1.0', contenido)
 			self.master.title(direcion)
+
+
 	def guardar_archivo(self):
 		try: 
 			filename = filedialog.asksaveasfilename(defaultextension='.txt')
@@ -153,22 +164,22 @@ class Ventana(Frame):
 				self.texto.delete('1.0', 'end')
 
 	def segunda_ventana(self):
-		segunda_ventana = Toplevel()
+		segunda_ventana = Toplevel(self.master)
 		segunda_ventana = Ventana(segunda_ventana)		
-		segunda_ventana.mainloop()
 
 	def acerca_de(self):
-		vent_info = Toplevel(bg='white')
+		vent_info = Toplevel(self.master)
+		vent_info.config( bg='white')
 		vent_info.title('')
 		vent_info.resizable(0,0)
 		vent_info.iconbitmap('icono.ico')
 		vent_info.geometry('350x200+200+200')
 		Label(vent_info, bg='white', 
 			text= 'Programa realizado en Python \n con la liberia de Tkinter \n\n Autor: Magno Efren').pack(expand=True)
-		vent_info.mainloop()
 
- 	def formato_fuente(self):
-		self.vent_tipo_fuente = Toplevel()
+ 
+	def formato_fuente(self):
+		self.vent_tipo_fuente = Toplevel(self.master)
 		self.vent_tipo_fuente.overrideredirect(1)
 		self.vent_tipo_fuente.geometry('390x290+400+200')
 		self.vent_tipo_fuente.config(bg= 'SeaGreen1', relief ='raised', bd = 3)
@@ -203,7 +214,7 @@ class Ventana(Frame):
 		self.aceptar.grid(columnspan=2, row=3, padx=5, pady=5)
 
 		self.aplicar_formato()
-		self.vent_tipo_fuente.mainloop()
+
 
 	def mover(self, event):
 	    deltax = event.x - self.x
@@ -238,7 +249,7 @@ class Ventana(Frame):
 		self.texto.config(fg= color, insertbackground = color)
 
 	def elegir_color_fondo(self):
-		color = colorchooser.askcolor()[1]  #ff0000 askcolor()[1]   , askcolor()[0] (255.0, 0.0, 0.0)
+		color = colorchooser.askcolor()[1]
 		self.texto.config(bg= color)
 
 
@@ -247,4 +258,3 @@ if __name__ == "__main__":
 	app = Ventana(ventana)
 	app.mainloop()
 
-   
