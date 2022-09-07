@@ -1,6 +1,6 @@
 # @autor: Magno Efren
 # Youtube: https://www.youtube.com/c/MagnoEfren/
-#Reproductor de Musica
+# Reproductor de Musica
 
 from tkinter import Button, Label,Tk,filedialog, ttk, Frame, PhotoImage
 import pygame
@@ -8,8 +8,8 @@ import random
 import mutagen
 
 #from mutagen.mp3 import MP3
-
 #pygame.mixer.pre_init(frequency=44100)
+
 pygame.mixer.init()
 pygame.mixer.init(frequency=44100)
 cancion_actual =''
@@ -76,14 +76,13 @@ def iniciar_reproduccion():
 	tt = minutos*60 + segundos
 	tiempo['maximum']= tt  # tiempo total de la cancion
 	texto['text']= str(minutos) + ":" + str(segundos)
-
+	
 	actualizar = ventana.after(100 , iniciar_reproduccion)
 
 	if x == tt:
 		ventana.after_cancel(actualizar)
 		texto['text']= "00:00"
 		detener_efecto()
-
 		if pos != n:
 			pos = pos + 1
 			ventana.after(100 , iniciar_reproduccion)
@@ -93,7 +92,6 @@ def iniciar_reproduccion():
 
 def iniciar():
 	global cancion_actual
-
 	pygame.mixer.music.load(cancion_actual)
 	pygame.mixer.music.play()
 	iniciar_reproduccion()
@@ -143,21 +141,15 @@ def stop():
 	global actualizar
 	pygame.mixer.music.stop()
 	ventana.after_cancel(actualizar)
-	detener_efecto()
-
-   
+	detener_efecto()   
 def pausa():
 	global actualizar
 	pygame.mixer.music.pause()
 	ventana.after_cancel(actualizar)
 	detener_efecto()
-
-
 def continuar():
 	pygame.mixer.music.unpause()
 	ventana.after(100 , iniciar_reproduccion)
-
-
 ventana =Tk()
 ventana.title('Reproductor de Musica')
 ventana.iconbitmap('icono.ico')
