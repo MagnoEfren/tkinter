@@ -65,5 +65,6 @@ if __name__ == '__main__':
 	root.title('Matrix Animation')
 	root.config(bg= 'black')
 	root.attributes('-fullscreen', True)
+	root.wm_attributes('-transparentcolor', 'black')
 	app = Matrix(root)
 	app.mainloop()
