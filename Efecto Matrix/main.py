@@ -1,3 +1,6 @@
+# Efecto Matrix 
+# @autor: Magno Efren
+# Youtube: https://www.youtube.com/c/MagnoEfren
 
 from tkinter import Frame, Tk, Canvas
 from random import choice 
@@ -8,7 +11,6 @@ class Matrix(Frame):
 
 		self.canvas = Canvas(master, bg= 'black')
 		self.canvas.place(relx=0, rely=0, relwidth=1, relheight=1)
-
 
 		self.velocidad = [i for i in range(0,30,5)]
 		self.pos = [i for i in range(-200,200,20)]
@@ -27,7 +29,6 @@ class Matrix(Frame):
                       "j", "t", "4", "4", "4", "П", "Ц",
                 ]
 
-
 		self.draw()
 		self.update()
 
@@ -39,7 +40,6 @@ class Matrix(Frame):
 					fill = 'green2', font= ('Arial', 14))
 				self.letters.append(self.obj)
 
-
 	def update(self):
 		for letter in self.letters:
 			v = choice(self.velocidad)
@@ -47,7 +47,6 @@ class Matrix(Frame):
 			color = '#{:02x}{:02x}{:02x}'.format(0,self.green,0)
 			self.canvas.itemconfig(letter, fill=color)
 			self.canvas.move(letter, 0, v)
-
 			y = self.canvas.coords(self.obj)
 
 			if self.green >=250:
@@ -60,10 +59,6 @@ class Matrix(Frame):
 				self.canvas.delete('all')
 		
 		self.canvas.after(80, self.update)
-
-
-
-
 
 if __name__ == '__main__':
 	root = Tk()
