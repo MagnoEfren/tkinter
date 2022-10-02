@@ -118,12 +118,9 @@ class Login(Frame):
 		self.entry2.bind("<FocusIn>", lambda args: self.entry_in(self.entry2))
 		self.entry2.bind("<FocusOut>", lambda args: self.entry_out(self.entry2, self.contra_marcar))
 		self.entry2.pack(pady=4)
-
 		self.indica2 = Label(self.master, bg='DarkOrchid1', fg= 'black', font= ('Arial', 8, 'bold'))
 		self.indica2.pack(pady=2)
-
 		Button(self.master, text= 'Iniciar Sesion',  command = self.verificacion_users,activebackground='magenta', bg='#D64E40', font=('Arial', 12,'bold')).pack(pady=10)
-		
 		estilo = ttk.Style()
 		estilo.theme_use('clam')
 		estilo.configure("TProgressbar", foreground='red', background='black',troughcolor='DarkOrchid1',
