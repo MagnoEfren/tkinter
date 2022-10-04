@@ -6,9 +6,10 @@ import time
 
 ventana = Tk() 
 ventana.config(bg='gray')
-ventana.wm_attributes(
-    '-transparentcolor', 'gray')
-ventana.overrideredirect(1)                                                  # Eliminar el borde de la ventana
+ventana.wm_attributes('-transparentcolor', 'gray')
+# ventana.wm_attributes("-alpha", 0.5) Para linux
+# ventana.wait_visibility(ventana)  Para linux
+ventana.overrideredirect(1)   # Eliminar barra de titulo
 
 def salir(*args):
     ventana.destroy()
