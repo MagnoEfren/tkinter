@@ -9,6 +9,8 @@ import time
 import conexion 
 
 class Login(Frame):
+	executing = False
+	
 	def __init__(self, master, *args):
 		super().__init__( master,*args)
 		self.user_marcar = "Ingrese su correo"
@@ -65,6 +67,9 @@ class Login(Frame):
 		password_entry = self.entry2.get()
 
 		if users_entry!= self.user_marcar or self.contra_marcar != password_entry:
+			if self.executing:
+				return None
+			
 			users_entry = str("'" + users_entry + "'")
 			password_entry = str("'" + password_entry + "'")
 
@@ -91,6 +96,7 @@ class Login(Frame):
 						dato2 = dato2[0][2]
 
 					if dato1 != [] and dato2 != []:
+						self.executing = True
 						self.acceder_ventana_dos()
 			else:
 				self.indica1['text'] = 'Usuario incorrecto'
