@@ -1,6 +1,8 @@
 # Cronometro 
 # @autor: Magno Efren
 # Youtube: https://www.youtube.com/c/MagnoEfren
+#   Revise la versión 2 donde hay mejoras para evitar repetir codigo:
+#   https://github.com/MagnoEfren/gui_python_tkinter/blob/main/Cronometro/cronometro_v2.py
 
 from tkinter import Canvas, Button, Frame, Label,Tk
 
