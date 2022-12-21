@@ -27,11 +27,10 @@ class Ventana(Frame):
 		self.widgets()
 		self.master.columnconfigure(0, weight=1)
 		self.master.rowconfigure(0, weight=1)
-
+		
 	def widgets(self):
 		menu = Menu(self.master)
 		self.master.config(menu = menu)
-
 		archivo = Menu(menu, tearoff=0)	
 		archivo.add_command(label="Nuevo", command = self.nueva_ventana)
 		archivo.add_command(label="Ventana Nueva", command = self.segunda_ventana)
@@ -39,11 +38,9 @@ class Ventana(Frame):
 		archivo.add_command(label="Guardar", command = self.guardar_archivo)
 		archivo.add_separator()			
 		archivo.add_command(label="Salir", command = self.master.quit)
-
 		edicion = Menu(menu, tearoff=0)
 		edicion.add_command(label="Deshacer", command = lambda: self.texto.edit_undo())
-		edicion.add_separator()
-		
+		edicion.add_separator()	
 
 		edicion.add_command(label="Cortar", accelerator='Ctrl+X', 
 			command = lambda: self.master.focus_get().event_generate("<<Cut>>") )
@@ -53,33 +50,27 @@ class Ventana(Frame):
 			command = lambda: self.master.focus_get().event_generate("<<Paste>>"))
 		edicion.add_command(label="Eliminar", accelerator= 'Supr', 
 			command = lambda: self.master.focus_get().event_generate("<<Clear>>"))
-
 		formato = Menu(menu, tearoff=0)
 		formato.add_checkbutton(label="Ajustes de linea", variable = self.señal_ajustes, command= self.ajustes_de_linea)
 		formato.add_command(label="Fuente", command= self.formato_fuente)  
 		formato.add_command(label="Color de texto", command= self.elegir_color_texto)
 		formato.add_command(label="Color de fondo", command= self.elegir_color_fondo)
-
 		ver = Menu(menu, tearoff=0)
 		submenu = Menu(menu, tearoff=0)
 		submenu.add_command(label="Acercar", command= self.zoom_mas)
 		submenu.add_command(label="Alejar", command= self.zoom_menos) 
 		submenu.add_command(label="Restaurar Zoom", command= lambda: self.texto.config(font= (self.f, 12)))
-
 		ver.add_cascade(label="Zoom", menu = submenu)
 		ver.add_checkbutton(label="Barra de estado", variable = self.info_estado, command = self.barra_de_estado)
-
 		ayuda = Menu(menu, tearoff=0)
 		ayuda.add_command(label="Ver la ayuda")
 		ayuda.add_separator()		
 		ayuda.add_command(label="Acerca del Bloc de notas", command= self.acerca_de)
-
 		menu.add_cascade(label="Archivo", menu=archivo)
 		menu.add_cascade(label="Edicion", menu=edicion)
 		menu.add_cascade(label="Formato", menu=formato)
 		menu.add_cascade(label="Ver", menu=ver)
 		menu.add_cascade(label="Ayuda", menu=ayuda)
-
 		self.texto = Text(self.master, font= ('Arial', 12), undo= True, insertbackground='red')  
 		self.texto.grid(column=0, row=0, sticky='nsew')
 		ladox = Scrollbar(self.master, orient = 'horizontal', command= self.texto.xview)
@@ -88,7 +79,6 @@ class Ventana(Frame):
 		ladoy.grid(column = 1, row = 0, sticky='ns')
 		self.texto.configure(xscrollcommand = ladox.set, yscrollcommand = ladoy.set)
 		self.barra_estado = Label(self.master, font = ('Segoe UI Symbol', 10))
-
 		#eventos
 		self.master.bind('<Shift-KeyPress-S>', self.salir)
 
