@@ -3,7 +3,6 @@
 # Youtube: https://www.youtube.com/c/MagnoEfren
 
 from tkinter import Canvas, Button, Frame, Label,Tk
-
 ventana = Tk()
 ventana.config(bg='black')
 ventana.geometry('500x250')
@@ -38,14 +37,12 @@ frame4.rowconfigure(0, weight=1)
 frame5.columnconfigure(0, weight=1)
 frame5.rowconfigure(0, weight=1)
 
-
 canvas1= Canvas(frame1, bg='gray40', width=200, height =200,highlightthickness=0)
 canvas1.grid(column=0,row=0, sticky='nsew')
 canvas2= Canvas(frame2, bg='gray30', width=200, height =200,highlightthickness=0)
 canvas2.grid(column=0,row=0, sticky='nsew')
 canvas3= Canvas(frame3, bg='gray20', width=200, height =200,highlightthickness=0)
 canvas3.grid(column=0,row=0, sticky='nsew')
-
 
 texto1 = canvas1.create_text(1,1, text='0', font=('Arial',12,'bold'), fill= 'White')
 texto2 = canvas2.create_text(1,1, text='0', font=('Arial',12,'bold'), fill= 'White')
@@ -69,7 +66,6 @@ contar = 0
 click_lectura = 0
 clik_stop = 0
 clik_inicio =0
-
 def iniciar_pausar():
 	global mi, se, ml, contar, clik_stop, clik_inicio
 	ml = ml + 1
@@ -84,7 +80,6 @@ def iniciar_pausar():
 	if clik_inicio is   None:		
 		stop.grid(column=0, row=0, padx =10, pady=10, sticky='nsew')
 		stop.config(bg= 'orange', text= 'DETENER')
-
 def stop_boton():
 	global  contar, clik_stop
 	clik_stop = stop.grid_forget()
@@ -92,7 +87,6 @@ def stop_boton():
 		inicio.grid(column=0, row=0, padx =10, pady=10, sticky='nsew')
 		inicio.config(bg= 'aqua', text='CONTINUAR')		
 		inicio.after_cancel(contar)
-
 def vueltas():
 	global mi, se, ml,click_lectura
 
@@ -116,7 +110,6 @@ def vueltas():
 		lectura6.config(text='{} → {}:{}:{}'.format(click_lectura, mi,se,ml), 
 			fg = 'white', bg='gray10')
 		click_lectura = 0
-
 def reiniciar():
 	global mi, se, ml, contar, click_lectura
 	mi = 0
@@ -133,7 +126,6 @@ def reiniciar():
 	stop.grid_forget()	
 	inicio.grid(column=0, row=0, padx =10, pady=10, sticky='nsew')
 	inicio.config(bg= 'green2', text='INICIAR')
-
 def coordenadas():
 	x = canvas1.winfo_width()
 	y = canvas1.winfo_height()
