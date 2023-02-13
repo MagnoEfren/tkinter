@@ -10,8 +10,6 @@ ventana.title('Cronometro')
 ventana.minsize(width=500, height=250)
 
 ventana.columnconfigure([0,1,2],weight=2)
-#ventana.columnconfigure(1, weight=2)
-#ventana.columnconfigure(2,weight=2)
 ventana.rowconfigure(0, weight=2)
 ventana.rowconfigure(1,weight=1)
 
