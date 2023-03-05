@@ -7,7 +7,6 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import numpy as np
 import matplotlib.pyplot as plt
 
-
 fig, ax = plt.subplots(dpi=90, figsize=(7,5),facecolor='#00faafb7')
 plt.title("Grafica en Tkinter con Matplotlib",color='red',size=16, family="Arial")
 
@@ -18,28 +17,21 @@ ax.set_facecolor('black')
 ax.axhline(linewidth=2, color='r')
 ax.axvline(linewidth=2, color='r')
 
-
 ax.set_xlabel("Eje  Horizontal", color='black')
 ax.set_ylabel("Eje  Vertical", color='black')
 ax.tick_params(direction='out', length=6, width=2, 
 	colors='black',
     grid_color='r', grid_alpha=0.5)
 
-
 def graficar_datos():
 	nivel = scale.get()
 	x = np.arange(-np.pi, 4*np.pi, 0.01) 	
-
 	line, = ax.plot(x, nivel*np.sin(x), 
 		color ='b', linestyle='solid')
 	canvas.draw()
-
 	label.config(text= nivel)
-	
 	line.set_ydata(np.sin(x)+10)
-
 	ventana.after(100, graficar_datos)
-
 
 ventana = Tk()
 ventana.geometry('642x498')
@@ -61,6 +53,5 @@ scale.grid(column=2, row=1)
 
 style = ttk.Style()
 style.configure("Horizontal.TScale", background= 'gray22')  
-
 ventana.mainloop()
 
