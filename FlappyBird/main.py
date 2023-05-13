@@ -117,10 +117,8 @@ def game_end():
 	mixer.music.load('audio/die.wav')
 	mixer.music.play(loops= 0)
 
-
 lbl_game_over = tk.Label(window, text = 'Game Over !', font= ('D3 Egoistism outline', 30), fg='white', bg='#00bfff')
 bt_reset = tk.Button(window, border = 0, image= img_reset, activebackground='#00bfff', bg= '#00bfff', command = reset_game)
-
 
 window.after(50, move_bird)
 window.after(50, move_pipe)
