@@ -12,8 +12,6 @@ ventana.title('Alarma')
 ventana.minsize(width=500, height=250)
 mixer.init()
 
-
-
 lista_horas = []
 lista_minutos = []
 lista_segundos = []
