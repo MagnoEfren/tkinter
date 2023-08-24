@@ -5,6 +5,7 @@ from tkinter import  messagebox , Label,Tk,ttk
 from time import   strftime
 from pygame import mixer
 
+
 ventana = Tk()
 ventana.config(bg='black')
 ventana.geometry('500x250')
