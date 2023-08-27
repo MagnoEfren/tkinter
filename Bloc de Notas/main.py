@@ -8,6 +8,7 @@ from tkinter import Button, Entry, Label, Menu, Scrollbar, Text
 from tkinter import messagebox, filedialog, Toplevel, colorchooser
 from tkinter import font, BooleanVar
 
+
 class Ventana(Frame):
 	def __init__(self, master):
 		super().__init__( master)
