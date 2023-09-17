@@ -5,7 +5,6 @@ from tkinter import  messagebox , Label,Tk,ttk
 from time import   strftime
 from pygame import mixer
 
-
 ventana = Tk()
 ventana.config(bg='black')
 ventana.geometry('500x250')
@@ -40,7 +39,6 @@ combobox2.current(0)
 combobox3 = ttk.Combobox(ventana, values = lista_segundos , style = "TCombobox", justify='center',width='12', font='Arial')
 combobox3.grid(row=2, column=2, padx =15, pady=5)
 combobox3.current(0)
-
 style = ttk.Style()
 style.theme_create('combostyle', parent='alt',settings = {'TCombobox':
                                      {'configure':
@@ -74,7 +72,6 @@ def obtener_tiempo():
 
 	hora_total = (hora + ' : '+ minutos+ ' : '+ segundos)
 	texto_hora.config(text=hora_total, font = ('Radioland', 25))
-
 	hora_alarma = x_hora +' : '+ x_minutos +' : '+ x_segundos
 	alarma['text']= hora_alarma
 	#condicion:
@@ -84,10 +81,8 @@ def obtener_tiempo():
 				mixer.music.load("audio.mp3")
 				mixer.music.play(loops= int(cantidad.get()))
 				messagebox.showinfo(message=hora_alarma, title="Alarma")
-
 	texto_hora.after(100, obtener_tiempo)
 texto_hora = Label(ventana,  fg = 'green2', bg='black')
 texto_hora.grid(columnspan=3, row=0,sticky="nsew", ipadx=5, ipady=20)
 obtener_tiempo()
-
 ventana.mainloop()
