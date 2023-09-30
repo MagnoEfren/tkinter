@@ -65,7 +65,6 @@ def obtener_tiempo():
 	x_hora = combobox1.get()
 	x_minutos = combobox2.get()
 	x_segundos = combobox3.get()
-
 	hora =  strftime('%H')
 	minutos = strftime('%M')
 	segundos = strftime('%S')
