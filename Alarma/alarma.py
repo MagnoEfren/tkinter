@@ -1,6 +1,7 @@
 # Alarma 
 # @autor: Magno Efren
 # Youtube: https://www.youtube.com/c/MagnoEfren
+
 from tkinter import  messagebox , Label,Tk,ttk
 from time import   strftime
 from pygame import mixer
@@ -66,7 +67,6 @@ def obtener_tiempo():
 	hora =  strftime('%H')
 	minutos = strftime('%M')
 	segundos = strftime('%S')
-
 	hora_total = (hora + ' : '+ minutos+ ' : '+ segundos)
 	texto_hora.config(text=hora_total, font = ('Radioland', 25))
 	hora_alarma = x_hora +' : '+ x_minutos +' : '+ x_segundos
