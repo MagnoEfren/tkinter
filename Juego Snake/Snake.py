@@ -6,8 +6,6 @@
 from tkinter import  Tk, Frame, Canvas, Button,Label, IntVar, ALL
 import random
 from pygame import mixer
-
-
 x, y =15,15
 direction = ''
 posicion_x = 15
