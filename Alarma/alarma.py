@@ -1,7 +1,6 @@
 # Alarma 
 # @autor: Magno Efren
 # Youtube: https://www.youtube.com/c/MagnoEfren
-
 from tkinter import  messagebox , Label,Tk,ttk
 from time import   strftime
 from pygame import mixer
