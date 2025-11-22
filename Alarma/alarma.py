@@ -1,3 +1,5 @@
+
+
 # Alarma 
 # @autor: Magno Efren
 # Youtube: https://www.youtube.com/c/MagnoEfren
@@ -83,3 +85,4 @@ texto_hora = Label(ventana,  fg = 'green2', bg='black')
 texto_hora.grid(columnspan=3, row=0,sticky="nsew", ipadx=5, ipady=20)
 obtener_tiempo()
 ventana.mainloop()
+
