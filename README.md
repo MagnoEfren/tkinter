@@ -1,5 +1,3 @@
-
-
 <div align="center">
   
 # Interfaces Graficas en Python con Tkinter  
@@ -33,7 +31,6 @@ Entre estas y muchas mas aplicaciones realizas con Tkinter en Python  encontrara
 
 </div>
   
-
 <div align="right">
   
 #### ___Si desea apoyar puede hacerlo aquí:___
